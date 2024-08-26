@@ -1,0 +1,10 @@
+# create disk symlink directory
+ACTION=="add", KERNEL=="sd*", RUN+="/bin/mkdir -p /dev/disk/by-custom"
+
+# stratis cache disks
+KERNEL=="sd*", ENV{ID_SERIAL_SHORT}=="S33DNX0H600791N", ENV{DEVTYPE}=="disk", SYMLINK+="disk/by-custom/stratisCache01", OWNER="root", GROUP="root"
+
+# stratis data disks
+KERNEL=="sd*", ENV{ID_SERIAL_SHORT}=="WD-WCC4J0XU6SV5", ENV{DEVTYPE}=="disk", SYMLINK+="disk/by-custom/stratisData01", OWNER="root", GROUP="root"
+KERNEL=="sd*", ENV{ID_SERIAL_SHORT}=="WD-WCC4J0JDT0EF", ENV{DEVTYPE}=="disk", SYMLINK+="disk/by-custom/stratisData02", OWNER="root", GROUP="root"
+KERNEL=="sd*", ENV{ID_SERIAL_SHORT}=="WD-WCC4J1CC6ASK", ENV{DEVTYPE}=="disk", SYMLINK+="disk/by-custom/stratisData03", OWNER="root", GROUP="root"
